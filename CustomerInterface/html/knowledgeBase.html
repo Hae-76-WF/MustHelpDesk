@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base</title>
+    
+</head>
+<body>
+    
+    <?php
+    include("./html/header1.html");
+    include("./html/header2.html");
+    ?>
+
+
+    
+<br>
+<div class="breadcrumb">
+<h4>Categories</h4>
+<hr>
+<br><br>
+<div style="gap: 10px; display:flex;flex-direction:row;">
+    <?php
+    if(!$result){
+        echo "To be uploaded soon.";
+    }
+    $count = 1;
+    foreach($result as $row){
+
+        $knowledgeBase = $row["title"];
+        $knowledgeBaseID = $row["id"];
+
+
+        $_SESSION["knowledgeBase"] = $knowledgeBase;
+
+        echo"
+            <div style='margin-left:20px;'>
+                <a href='./subKnowledgeBase.php?link=$knowledgeBase&link2=$knowledgeBaseID'>$count"."."."$knowledgeBase</a>
+                <p></p>
+            </div>
+            ";
+        $count ++;
+    }
+    
+    ?>
+</div>
+</div>
+<br>
+<div class="breadcrumb">
+    <?php
+    include("./html/footer.html");
+    ?>
+</div>
+</body>
+</html>

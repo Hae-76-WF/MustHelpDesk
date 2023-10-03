@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base</title>
+
+</head>
+<body>
+    <?php
+    include("./html/header1.html");
+    include("./html/header2.html");
+    ?> 
+<br>
+<div class="breadcrumb">
+<h4>
+    <?php
+    echo $category;
+    ?>
+</h4>
+<hr>
+<br>
+
+<?php
+foreach($result as $row){
+       $name = $row["section_title"];
+    $description = $row["content"];
+    $imageSrc = $row["images"];
+
+
+    if(!empty($imageSrc)){
+    echo"
+        <div class='breadcrumb'>
+    <h6>$name</h6>
+    <p>$description</p>
+    <img src='$imageSrc' alt='' srcset=''>
+</div>
+    <br>
+    ";
+    }else{
+
+    echo"
+    <div class='breadcrumb'>
+        <h6>$name</h6>
+        <p>$description</p>
+    </div>
+    <br>
+    ";
+    }
+}
+?>
+</div>
+<br>
+<div class="breadcrumb">
+    <?php
+    include("./html/footer.html");
+    ?>
+</div>
+</body>
+</html>

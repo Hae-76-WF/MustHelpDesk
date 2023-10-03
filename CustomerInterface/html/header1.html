@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <script src="./js/app.js" defer></script>
+    <title>Document</title>
+    <style>
+        .bod body {
+            font-family: Arial, sans-serif;
+            background-color: whitesmoke; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-container {
+            background-color: whitesmoke; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px;
+        }
+
+        .header-container img {
+            max-width: 60%;
+            height: auto;
+        }
+
+        .header-links {
+            display: flex;
+            text-decoration: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end; 
+            gap: 10px; 
+            margin-bottom: 10px;
+            font-size: 14px; 
+        }
+
+        .header-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+        .header-links a:hover {
+            text-decoration: none;
+            color: rgb(106, 190, 204);
+            font-size: 14px;
+        }
+
+        .nav-links-container {
+            background-color: whitesmoke; 
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            gap: 10px; 
+            float: right;
+            margin-top: -3rem; 
+        }
+
+        .nav-links-container a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+        .nav-links-container a:hover {
+            text-decoration: none;
+            color: rgb(106, 190, 204);
+            font-size: 14px;
+        }
+
+        .notifications-container {
+            display: none; 
+            background-color: whitesmoke; 
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        .notifications-container hr {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        i.fas.fa-bell {
+            font-size: 24px; 
+            color: rgb(76, 76, 76); 
+            margin-left: 10px; 
+            cursor: pointer; 
+        }
+
+        i.fas.fa-bell:hover {
+            color: rgb(106, 190, 204);
+    
+        }
+        i.fas.fa-bell:hover .notifications-container{
+        
+            display: block; 
+        }
+
+        #markAllButton, #showAllButton {
+            background-color: rgb(106, 190, 204); 
+            color: white; 
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #markAllButton:hover, #showAllButton:hover {
+            background-color: #666; 
+        }
+
+        .dropDownmenu{
+            display: none; 
+        }
+      
+        div .hoverAc:hover .dropDownmenu{
+            display: inline;
+            position:relative;
+            right: 20%;
+            top: 100%;  
+        }
+        .dropDownmenu ul{
+            display: block;
+            margin:10px;
+        }
+
+        .dropDownmenu ul li{
+            width: 150px;
+            text-decoration: none;
+        }
+        img{
+            position: relative;
+            width: 70px;
+         
+        }
+ 
+    </style>
+</head>
+<body class="bod">
+    <div class="header-container">
+        <img src="../../Assets/images/logo.png" alt="Logo" >
+        <div class="header-links">
+            <div><a href="./ticketList.php">My tickets</a></div>
+            <!-- <div><a href="./notifications.php">My tickets</a></div> -->
+            <div><a href="./newTicket.php">New Ticket</a></div>
+            <div><a href="./myNotifications.php"><i class="fas fa-bell notificationsBell"></i></a></div>
+            <div class="hoverAc">
+                <p style="font-size: 14px;" class="name">
+                    <?php
+                    if(isset($_SESSION["userName"])){
+                        echo $_SESSION["userName"];
+                    }
+                    ?>
+                <i class="fas fa-caret-down"></i></p>
+                <div class="dropDownmenu">
+                    <ul>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="nav-links-container">
+        <div><a href="./knowledgeBase.php">Knowledge base</a></div>
+        <div><a href="./serviceCatalog.php">Service Catalog</a></div>
+        
+        <div>
+            <?php
+            if(isset($_SESSION["userName"])){
+                echo "<a href='./personalPreferences.php'>Personal Preferences</a>";
+            }
+            ?>
+        </div>
+        <div>
+            <?php
+                    if(isset($_SESSION["userName"])){
+                        echo " <a href='./logout.php' id='logoutBtn'>Log out</a>";
+                    }
+            ?>
+        </div>
+    </div>
+
+    <div class="notifications-container">
+        <?php
+        getNotifications();
+        ?>
+        <hr>
+        <button id="markAllButton">Mark all as Read</button>
+        <hr>
+        <button id="showAllButton"><a href="./myNotifications.php">Show all</a></button>
+    </div>
+    <script>
+        var div = document.querySelector('i');
+
+        // Add event listener for mouseover
+        div.addEventListener('mouseover', function() {
+            // Add class on hover
+            this.classList.add('show');
+        });
+
+        // Add event listener for mouseout
+        div.addEventListener('mouseout', function(){
+            this.classList.remove('show');
+        });
+
+        var lg = document.getElementById('logoutBtn');
+        lg.addEventListener('click',()=>{
+            
+            if(confirm("Are you sure you want to log out?")){
+                
+            }else{
+             
+            }
+        
+        })
+    </script>
+</body>
+</html>

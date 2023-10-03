@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <title>HomePage</title>
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+                                    
+        }
+
+        .content {
+
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(106, 190, 204);
+            margin: 25px;
+            height: 25vh;
+    
+        }
+        .knowledgeContent {
+
+            text-align: left;
+            padding: 20px;
+            padding-top: 0;
+            display:inline-block;
+            margin: 25px;
+            height: 25vh;
+            color: rgb(108, 110, 112);
+        }
+
+        p {
+            font-size: 12px;
+            color: rgb(147 ,170,190);
+        }
+        .help{
+            font-size: 25px;
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        span {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 25rem;
+        }
+
+        i.fas.fa-search {
+            position: relative;
+            top: 20%;           
+            right: 3rem; /* Adjust the right position of the icon */
+            transform: translateY(-5%);
+            color: #666;
+            margin-right: rem;
+        }
+
+        img {
+            width: 100%;
+            height: 90px;
+            
+        }
+
+        strong {
+            font-size: 14px;
+            color: rgb(77, 76, 81);
+        }
+
+        .box {
+            flex: 1;
+            background-color: #fff;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            align-items: center;
+            
+        }
+        .knowledgeBox {
+     
+            background-color: #e2e2e2;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: auto;
+            height: 50px;
+            text-align: center;
+            align-items: center;
+            text-wrap: nowrap;
+            
+        }
+
+        .items {
+            display: flex;
+            position:absolute;
+            flex-direction: row;
+            justify-content: center;
+            width: 65%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        h1 , h2{
+            color: rgb(77, 76, 81);
+        }
+
+    </style>
+</head>
+<body>
+    <?php
+
+    if(isset($_SESSION['id'])){
+    include('./html/header1.html');
+    }
+
+    ?>
+   
+    <div class="content">
+        <h4 class="help">How can we help you today?</h4>
+        <span><input type="text" name="searchKnowledge" id="searchKnowledge" placeholder="Search for any issue you are facing ..." onkeyup="getSearchResults()">
+        <i class="fas fa-search"></i></span>
+    </div>
+
+
+    <div class="knowledgeContent">
+        <h3 style="align-items: left;">Popular issues</h3>
+
+        <div  style="display:flex ; flex-direction: row; flex-wrap:wrap;">
+
+            <?php
+            $count = 0;
+    
+            if(!$KnowledgeResults){
+                echo "Nothing to see here.";
+                goto End;
+            }
+            foreach($KnowledgeResults as $row){
+                $knowledgeBase = $row["title"];
+                $knowledgeBaseID = $row["id"];
+                $_SESSION["knowledgeBase"] = $knowledgeBase;            
+            
+             echo" 
+            <a href='./subKnowledgeBase.php?link=$knowledgeBase&link2=$knowledgeBaseID' style='text-decoration:none;display:flex ; flex-direction: row;' class='knowledgeBox'>
+            <div style='display:flex ; flex-direction: row; align-items:center;'>
+                <div style='flex: 0.15; padding-left:8px; '>
+                <h1>+</h1>
+                </div>
+                <div style='flex: 1; color: rgb(111, 110, 115); padding-left:20px; padding-right:20px;'>
+                    <h5>$knowledgeBase</h5>
+                </div>
+            </div>
+            </a> 
+            ";
+
+           $count++;
+            if($count == 7){
+                break;
+            }
+
+            }
+             End:
+            ?>
+        
+
+        <a href="./newTicket.php" style="text-decoration:none; display:flex ; flex-direction: row;" class="knowledgeBox">
+            <div style="display:flex ; flex-direction: row; align-items:center;">
+                <div style="flex: 0.15; margin-left:0;  padding-left:8px; ">
+                <h2>?</h2>
+                </div>
+                <div style="flex: 1; color: rgb(111, 110, 115); padding-left:20px; padding-right:20px;">
+                <h5>Issue not in list? Click to create a new Ticket</h5>
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+    </div>
+    <br><br>
+
+    <?php
+    if(isset($_SESSION["userName"])){
+   
+        echo"
+    <div class='items'>
+        <a href='./ticketList.php?link=MyTickets&link2=AllTickets' style='text-decoration:none;' class='box'>
+            <div style='display:flex ; flex-direction: row; align-items:center;'>
+                <div style='flex: 1; margin-left:0;'>
+                <strong>Your Tickets</strong>
+                </div>
+                <div style='flex: 1;'>
+                <h3 style=' color: rgb(106, 190, 204);'>
+                    ($countAllTickets)
+                </h3>
+                </div>
+            </div>
+        </a>
+        <a href='./ticketList.php?link=MyTickets&link2=OpenTickets' style='text-decoration:none;' class='box'>
+            <div style='display:flex ; flex-direction: row; align-items:center;'>
+                <div style='flex: 1; margin-left:0;'>
+                <strong>Open Tickets</strong>
+                </div>
+                <div style='flex: 1;'>
+                <h3 style=' color: rgb(106, 190, 204);'>
+                
+                ($countOpenTickets)
+                
+                </h3>
+                </div>
+            </div>
+        </a>
+        <a href='./ticketList.php?link=MyTickets&link2=ClosedTickets' style='text-decoration:none; color:cadetblue;' class='box'>
+            <div style='display:flex ; flex-direction: row; align-items:center;'>
+                <div  style='flex: 1; margin-left:0;'>
+                <strong>Closed Tickets</strong>
+                </div>
+                <div style='flex: 1;'>
+                <h3 style=' color: rgb(106, 190, 204);'>
+    
+                ($countClosedTickets)
+               
+                </h3>
+                </div>
+            </div>
+        </a>
+    </div> 
+    ";     
+}
+?>
+<script>
+    function getSearchResults() {
+        let val = document.querySelector("#searchKnowledge").value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "./homepage.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("searchValue=" + val);
+    
+        console.log(val);
+
+    }
+</script>
+
+
+</body>
+</html>

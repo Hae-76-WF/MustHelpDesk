@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb {
+            background-color: white;
+            padding: 10px;
+            margin: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .breadcrumb span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .breadcrumb strong {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: rgb(106, 190, 204);
+        }
+
+        .breadcrumb h4 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .breadcrumb .link-group {
+            margin: 20px 0;
+        }
+
+        .breadcrumb .link-group span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .breadcrumb .link-group a {
+            text-decoration: none;
+            color: rgb(106, 190, 204);
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <div>
+            <span><a href="./homepage.php">Home</a> <strong>></strong></span>
+            <span>
+                <?php
+                if(isset($location)){
+                    echo "$location"; 
+                }
+                ?>
+            </span>
+            <?php
+            if(isset($category)){
+                echo "<span><strong>></strong>{$category}</span>";
+            }
+            ?>
+        </div>
+        <h4>
+            <?php
+            echo $location; 
+            ?>
+        </h4>  
+        <div class="link-group" style="display: flex;flex-direction:row; gap:10px; margin-bottom:0">
+            <?php
+            if($location == "Personal Preferences"){
+                echo'
+                    <span><a href="personalPreferences.php?link=General">General</a></span><br>
+                    <span><a href="personalPreferences.php?link=Security">Security</a></span>
+                ';
+            }elseif($location == "New Ticket"){
+                echo'
+                    <span><a href="newTicket.php?link=Ticket">Ticket</a></span><br>
+                    <span><a href="newTicket.php?link=ProcessTicket">Process Ticket</a></span>
+                ';
+            }elseif($location == "Ticket List"){
+                echo'
+                    <span><a href="ticketList.php?link=MyTickets">My tickets</a></span><br>
+                    <span><a href="ticketList.php?link=CompanyTickets">Company Tickets</a></span>
+                ';
+            }
+            ?>
+        </div>
+    </div>
+</body>
+</html>

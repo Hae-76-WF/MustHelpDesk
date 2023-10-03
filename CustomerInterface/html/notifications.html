@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+   
+</head>
+<body>
+    <?php
+    include("./html/header1.html");
+    ?>
+    <div>
+        <p>How can we help you today?</p>
+        <span><input type="text" name="" id=""></span><span>Search icon</span>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>O</th>
+                <th>Title</th>
+                <th>State</th>
+                <th>Time Created</th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php
+    getAllNotifications();
+    ?>
+        </tbody>
+    </table>
+
+</body>
+</html>

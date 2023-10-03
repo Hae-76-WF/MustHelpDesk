@@ -1,0 +1,42 @@
+<div>
+    <span><button><a href="./ticketList.php?link=MyTickets&link2=AllTickets">All Tickets</a></button></span><span><button><a href="./ticketList.php?link=MyTickets&link2=OpenTickets">Open Tickets tickets</a></button></span><span><button><a href="./ticketList.php?link=MyTickets&link2=ClosedTickets">Closed Tickets tickets</a></button></span>
+    <!-- <span><input type="text" name="searchTicket" id="searchTicket"></span>-->
+    
+</div>
+
+<br>
+<table>
+<thead>
+<tr>
+<td>Ticket Number</td>
+<td>Title</td>
+<td>State</td>
+<td>Created</td>
+</tr>
+</thead>
+<tbody>
+<?php
+    if (isset($_GET['link2'])){
+
+        $link = $_GET['link2'];
+        
+        if ($link == 'AllTickets') {
+
+        allTickets();
+
+        }elseif ($link == 'OpenTickets') {
+
+        openTickets();
+   
+        }elseif ($link == 'ClosedTickets') {
+
+         closedTickets();
+   
+        }
+    }else{
+        allTickets();
+
+    }
+?>
+</tbody>
+</table>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+
+</head>
+<body>
+    <?php
+    include("./html/header2.html");
+    ?>
+
+
+<div style="display:flex;flex-direction:row;">
+
+<div>
+
+<div><span><img src="" alt=""></span><span><h4>Product Catalog</h4></span>
+<p>Can you please send me the product catalog?</p>
+</div>
+
+<br>
+<hr>
+<div>
+    <span><strong>Created:</strong></span>
+    <span>
+        <?php
+        echo $dateCreated;
+        ?>
+    </span>
+</div>
+<strong>Subject*</strong>
+<div>
+    <span><img src="" alt=""></span>
+    <span>
+        <input type="text" placeholder="Re:Product Catalog">
+    </span>
+</div>
+<p>Subject for a new article</p>
+<strong>Message*</strong>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<p>Please enter a message for the new article</p>
+<strong>Attachments</strong>
+<input type="file" name="files" id="file">
+<button type="submit">Submit</button>
+</div>
+
+
+
+
+<div>
+<button id="respondButton">Respond to this Ticket</button>
+<button id="printButton">Print Ticket</button>
+<strong>state</strong>
+<p>
+  <?php
+  echo $ticketState ;
+  ?>  
+</?>
+<br>
+<strong>Ticket Number</strong>
+<p>
+  <?php
+  echo $ticketNumber ;
+  ?>  
+</?>
+<br>
+<strong>Queue</strong>
+<p>
+  <?php
+  echo $ticketQueue ;
+  ?>  
+</?>
+<br>
+<strong>Priority</strong>
+<p>
+  <?php
+  echo $ticketPriority;
+  ?>  
+</?>
+<br>
+</div>
+</div>
+</body>
+</html>

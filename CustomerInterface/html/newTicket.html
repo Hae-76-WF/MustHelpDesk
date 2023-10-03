@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(106, 190, 204);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container strong {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .container p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .container input[type="text"],
+        .container textarea,
+        .container select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .container button[type="submit"] {
+            background-color: rgb(106, 190, 204);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .container button[type="submit"]:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <?php
+    include("./html/header2.html");
+    ?>
+    <header>
+        <h1><a href="#">New Ticket</a></h1>
+    </header>
+    <div class="container">
+    <?php
+        if (isset($_GET['link'])){
+
+        $link = $_GET['link'];
+        
+        if ($link == 'Ticket') {
+
+            echo"
+                <form action='./newTicket.php' method='post' enctype='multipart/form-data'>
+                <strong>Subject*</strong>
+                <input type='text' name='subject' id='subject'>
+                <p>Please insert a title for the ticket</p>
+                <strong>Message*</strong>
+                <textarea name='textarea' id='default'></textarea>
+                <strong>Attachments*</strong>
+                <input type='file' name='files' id='file'>
+        
+                <button type='submit' id='submitted'>Create ticket</button>
+                </form>
+            ";
+
+        } elseif ($link == 'ProcessTicket') {
+
+            echo '
+                <strong>Process</strong>
+                <select>
+                    <option value="new">New Ticket</option>
+                    <option value="in_progress">In Progress Ticket</option>
+                    <option value="resolved">Resolved Ticket</option>
+                    <option value="closed">Closed Ticket</option>
+                    <option value="on_hold">On Hold Ticket</option>
+                </select>
+                <p>Please select one of the processes</p>
+            ';
+            
+        }
+    }else{
+            
+        echo"
+            <form action='./newTicket.php' method='post' enctype='multipart/form-data'>
+            <strong>Subject*</strong>
+            <input type='text' name='subject' id='subject' placeholder='What issue are you facing?'>
+        
+            <strong>Message</strong>
+            <textarea name='textarea' id='default' placeholder='Description of your problem with more detail'></textarea>
+            
+            <label for='file'>(Optional)Please include an image for clearity</label>
+            <br>
+            <strong>Attachment</strong>
+            <input type='file' name='file' id='file' placeholder='Upload an image/document for clearity'>
+            <br><br>
+            <button type='submit' id='submitted'>Create ticket</button>
+            </form>
+        ";
+    }
+    ?>
+    </div>
+    <div></div>
+
+    <script>
+    
+        let lg = document.getElementById("submitted");
+        lg.addEventListener('click', () => {
+            alert("Ticket created successfully");
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+change customeruser table name
+add password field in customeruser
+make sure the customer userid exists in the customer table

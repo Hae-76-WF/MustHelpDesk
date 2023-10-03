@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=f, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="../../Assets/images/logo.png" type="image/png"/>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../../Assets/bootstrap/css/bootstrap.min.css"/>
+
+<!--    <link rel="stylesheet" href="./css/style.css">-->
+    <script src="./js/password.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card w-50 text-center mr-auto mb-auto ml-auto" style="margin-top: 15%;">
+            <div class="m-2">
+                <div class="col-12 text-center">
+                    <img src="../../Assets/images/logo.png" alt="Logo" width="165">
+                </div>
+            </div>
+            <div class="card-body text-center">
+                <form action="" method="post" class="form">
+                    <h4 class="text-dark">Login</h4>
+                    <i style="display: none; color: #cb2121" id="login_error">Invalid login details</i>
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+                        <!--            <i class="fas fa-eye" id="toggle-password" onclick="togglePassword()"></i>-->
+                    </div>
+                    <div class="form-group text-left">
+                        <a href="./changePassword.php">Have you forgotten your password?</a>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button  type="submit" class="btn-sm btn-md btn-lg btn-primary w-25" name="submit">Login</button>
+                    </div>
+
+
+                    <p>You do not have an account yet? <a href="./signUp.php">Register Now!</a></p>
+                </form>
+            </div>
+
+
+        </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal preferences</title>
+
+    <style>
+        #content {
+            width: 40%;
+            text-align: left;
+            padding: 20px;
+            margin: 15px; 
+            border: 1px solid rgb(97, 97, 97);
+            height: 70vh;
+        }
+        
+        div > span {
+            margin-right: 10px;
+        }
+        
+        div {
+            margin-top: 10px;
+        }
+        
+        input[type="button"],
+        input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(0,177,106);
+            color: white;
+            cursor: pointer;
+            float: right; 
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        
+        
+        </style>
+
+</head>
+<body>
+    <?php
+    include("./html/header2.html");
+    ?>
+    <div class="breadcrumb">
+    <?php
+        if (isset($_GET['link'])){
+
+        $link = $_GET['link'];
+        
+        if ($link == 'General') {
+
+            echo'
+
+            <form action="" method="post">
+                <h5>Avatar</h5>
+                <div>
+                    <span><img src="" alt=""></span><span><strong>Change Avatar image</strong></span>
+                </div>
+                <p>Upload your Avatar image</p>
+
+                <strong>Language*</strong>
+                <select>
+                    <option value="english">English(United States)</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="japanese">Japanese</option>
+                </select>
+                <p>Select the interface language</p>
+
+
+                <strong>Time Zone*</strong>
+                <select>
+                    <option value="gmt">Greenwich Mean Time</option>
+                    <option value="est">Eastern Standard Time</option>
+                    <option value="cst">Central Standard Time</option>
+                    <option value="mst">Mountain Standard Time</option>
+                    <option value="pst">Pacific Standard Time</option>
+                    <option value="cet">Central European Time</option>
+                </select>
+                <p>Select your personal time zone. All time will be displayed relative to this time zone</p>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <div style="align-items:end">Chat</div>
+
+            ';
+
+        }elseif ($link == 'Security') {
+
+            echo'
+                <form action="" method="post">
+                    <strong>Change Password</strong>
+                    <input type="password" id="password" name="oldPassword" placeholder="Current Password " required>
+                    <input type="password" id="password" name="newPassword" placeholder="Enter your new password" required>
+                    <strong>The password must contain atleast:</strong>
+
+                    <input type="password" id="password" name="newPassword" placeholder="Re-enter your new password" required>
+                    <p>Set a new Password by filling in your current pasword and a new one</p>
+                    
+                        <strong>Two factor authentication</strong>
+                        <div><span><p>Authenticator App</p></span><span><button>Setup</button></span></div>
+                        <hr>
+                        <div><span><p>Email</p></span><span><button>Setup</button></span></div>
+                        <hr>
+                        <div><span><p>Revoke all trusted devices</p></span><span><a href=""><img src="" alt="Delete Devices"></a></span></div>
+                        
+                    <button type="submit">Submit</button>
+                    
+                </form>
+
+            ';
+            
+        }
+    } else{
+
+        echo'
+
+        <form action="" method="post">
+            <h5>Avatar</h5>
+            <div>
+                <span><img src="" alt=""></span><span><strong>Change Avatar image</strong></span>
+            </div>
+            <p>Upload your Avatar image</p>
+
+            <strong>Language*</strong>
+            <select>
+                <option value="english">English(United States)</option>
+                <option value="french">French</option>
+                <option value="german">German</option>
+                <option value="spanish">Spanish</option>
+                <option value="chinese">Chinese</option>
+                <option value="japanese">Japanese</option>
+            </select>
+            <p>Select the interface language</p>
+
+
+            <strong>Time Zone*</strong>
+            <select>
+                <option value="gmt">Greenwich Mean Time</option>
+                <option value="est">Eastern Standard Time</option>
+                <option value="cst">Central Standard Time</option>
+                <option value="mst">Mountain Standard Time</option>
+                <option value="pst">Pacific Standard Time</option>
+                <option value="cet">Central European Time</option>
+            </select>
+            <p>Select your personal time zone. All time will be displayed relative to this time zone</p>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <div style="align-items:end">Chat</div>
+
+        ';
+    }
+    ?>
+    </div>
+    <div></div>
+</body>
+</html>

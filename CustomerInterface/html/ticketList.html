@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket List</title>
+    <style>
+    table{
+       
+        width:100%;
+        height: 50px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    table thead{
+        font-weight: 600;
+    }
+    table tbody tr td{
+        border-bottom: solid 1px;
+    }
+    table thead tr td{
+        border-bottom: solid 1px;
+    }
+
+
+
+    </style>
+
+</head>
+<body>
+    <?php
+    include("./html/header2.html");
+    ?>
+
+    <div class="breadcrumb">
+    <?php
+        if (isset($_GET['link'])){
+
+        $link = $_GET['link'];
+        
+        if ($link == 'MyTickets') {
+
+            include("./html/myTickets.html");
+
+        }elseif ($link == 'CompanyTickets') {
+
+            include("./html/companyTickets.html");
+
+            
+        }
+    }else{
+        include("./html/myTickets.html");
+    }
+    ?>
+    </div>
+    <div></div>
+</body>
+</html>
+
+
+
+
+
+
+
