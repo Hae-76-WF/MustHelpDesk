@@ -3,7 +3,7 @@
         private $host = "localhost";
         private $database_name = "musthelpdesk_db";
         private $username = "root";
-        private $password = "+256794172442";
+        private $password = "";
         private $port = 3306;
         public $conn;
         public function getConnection(){
