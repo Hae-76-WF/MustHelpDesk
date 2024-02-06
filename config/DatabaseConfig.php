@@ -11,7 +11,7 @@
         public function __construct(){
             $this->host = "localhost";
             $this->user = "root";
-            $this->password = '+256794172442';
+            $this->password = '';
             $this->port = 3306;
             $this->db = "musthelpdesk_db";
             try{
@@ -73,7 +73,7 @@
         public function __construct(){
             $this->host = "localhost";
             $this->user = "root";
-            $this->password = 'student';
+            $this->password = '';
             $this->port = 3307;
             $this->db = "musthelpdesk_db";
             try{
